@@ -6,8 +6,8 @@ Write-Host "Set env variable..."
 [Environment]::SetEnvironmentVariable('MonitorIPAddress', $targetIP, [System.EnvironmentVariableTarget]::Machine)
 
 Write-Host "Downloading the file"
-$url = "https://raw.githubusercontent.com/mzdelar/Scripts/master/process_monitor.ps1"
-$outputPath = "C:\temp\process_monitor.ps1"
+$url = "https://raw.githubusercontent.com/mzdelar/Scripts/master/Get-NetConnection.ps1"
+$outputPath = "C:\temp\Get-NetConnection.ps1"
 Invoke-WebRequest -Uri $url -OutFile $outputPath
 
 Write-Host "Check and set execution policy"
@@ -17,7 +17,7 @@ if ($executionPolicy -eq "Restricted") {
 }
 
 Write-Host "Create a new Task Scheduler"
-$TaskAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "C:\temp\process_monitor.ps1"
+$TaskAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "C:\temp\Get-NetConnection.ps1"
 $TaskTrigger = New-ScheduledTaskTrigger -AtStartup
 $TaskUser = Read-Host "Please enter the username for starting script:"
 $TaskPassword = Read-Host "Please enter the password:" 
