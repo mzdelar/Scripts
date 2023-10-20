@@ -49,6 +49,8 @@ if ($taskStatus -eq "Running") {
 	Write-Host "The Process_Monitor task started."
 }
 
+Set-ExecutionPolicy Restricted
+
 Write-Host "Script execution OK."
 
 
